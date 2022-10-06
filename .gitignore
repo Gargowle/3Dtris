@@ -4,6 +4,9 @@
 # JetBrains IDEs user specific files
 .idea/
 
+# Ignore developer specific plugins as for example RiderLink
+Plugins/Developer/
+
 # Compiled Object files
 *.slo
 *.lo
