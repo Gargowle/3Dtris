@@ -42,6 +42,18 @@ protected:
 	UFUNCTION()
 	void MoveDown();
 
+	UFUNCTION()
+	void MoveForward();
+	
+	UFUNCTION()
+	void MoveBackward();
+	
+	UFUNCTION()
+	void MoveLeft();
+	
+	UFUNCTION()
+	void MoveRight();
+
 public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

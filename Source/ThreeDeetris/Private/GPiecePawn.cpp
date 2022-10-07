@@ -47,9 +47,37 @@ void AGPiecePawn::MoveDown()
 	SetActorLocation(GetActorLocation() - 100*FVector::ZAxisVector);
 }
 
+void AGPiecePawn::MoveForward()
+{
+	// TODO: adjust to consider view direction
+	SetActorLocation(GetActorLocation() + 100*FVector::XAxisVector);	
+}
+
+void AGPiecePawn::MoveBackward()
+{
+	// TODO: adjust to consider view direction
+	SetActorLocation(GetActorLocation() - 100*FVector::XAxisVector);	
+}
+
+void AGPiecePawn::MoveLeft()
+{
+	// TODO: adjust to consider view direction
+	SetActorLocation(GetActorLocation() + 100*FVector::YAxisVector);	
+}
+
+void AGPiecePawn::MoveRight()
+{
+	// TODO: adjust to consider view direction
+	SetActorLocation(GetActorLocation() - 100*FVector::YAxisVector);	
+}
+
 // Called to bind functionality to input
 void AGPiecePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAction(TEXT("MoveForward"), IE_Pressed, this, &AGPiecePawn::MoveForward);
+	PlayerInputComponent->BindAction(TEXT("MoveBackward"), IE_Pressed, this, &AGPiecePawn::MoveBackward);
+	PlayerInputComponent->BindAction(TEXT("MoveLeft"), IE_Pressed, this, &AGPiecePawn::MoveLeft);
+	PlayerInputComponent->BindAction(TEXT("MoveRight"), IE_Pressed, this, &AGPiecePawn::MoveRight);
 }
 
