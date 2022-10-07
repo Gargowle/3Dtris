@@ -44,7 +44,7 @@ void AGPiecePawn::BeginPlay()
 void AGPiecePawn::MoveDown()
 {
 	// move down by a meter
-	SetActorLocation(GetActorLocation()-100*FVector::ZAxisVector);
+	SetActorLocation(GetActorLocation() - 100*FVector::ZAxisVector);
 }
 
 // Called to bind functionality to input
