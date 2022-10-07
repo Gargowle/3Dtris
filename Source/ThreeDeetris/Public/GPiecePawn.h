@@ -6,6 +6,11 @@
 #include "GameFramework/Pawn.h"
 #include "GPiecePawn.generated.h"
 
+class UStaticMeshComponent;
+class USpringArmComponent;
+class UCameraComponent;
+
+
 UCLASS()
 class THREEDEETRIS_API AGPiecePawn : public APawn
 {
@@ -18,6 +23,15 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* MeshComp;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArmComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* CameraComp;
 
 	// Timer handle for the timer triggering the step-wise downward movement
 	FTimerHandle DownwardMovementTimerHandle;

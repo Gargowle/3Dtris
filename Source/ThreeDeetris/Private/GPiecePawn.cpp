@@ -3,6 +3,11 @@
 
 #include "GPiecePawn.h"
 
+#include "Components/StaticMeshComponent.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+
+
 // Sets default values
 AGPiecePawn::AGPiecePawn()
 {
@@ -11,6 +16,22 @@ AGPiecePawn::AGPiecePawn()
 	PrimaryActorTick.bCanEverTick = false;
 
 	DownwardMovementTimePeriod = 1.0;
+
+	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>("MeshComp");
+	RootComponent = MeshComp;
+	
+	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>("SpringArmComp");
+	SpringArmComp->SetupAttachment(RootComponent);
+	// enable camera angles different from horizontal alignment (driven by the Control Rotation)
+	SpringArmComp->bUsePawnControlRotation = true;
+
+	// The rotation of spring arm is controlled with pawn control rotation already. This disables a subtle side effect where rotating the
+	// CapsuleComponent (eg. caused by bOrientRotationToMovement in Character Movement) will rotate the spring arm until it self corrects later in the update.
+	// This may cause unwanted effects when using CameraLocation during Tick as it may be slightly offset from the final camera position.
+	SpringArmComp->SetUsingAbsoluteRotation(true);
+
+	CameraComp = CreateDefaultSubobject<UCameraComponent>("CameraComp");
+	CameraComp->SetupAttachment(SpringArmComp);
 }
 
 // Called when the game starts or when spawned
