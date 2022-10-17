@@ -62,13 +62,13 @@ void AGPiecePawn::MoveBackward()
 void AGPiecePawn::MoveLeft()
 {
 	// TODO: adjust to consider view direction
-	SetActorLocation(GetActorLocation() + 100*FVector::YAxisVector);	
+	SetActorLocation(GetActorLocation() - 100*FVector::YAxisVector);	
 }
 
 void AGPiecePawn::MoveRight()
 {
 	// TODO: adjust to consider view direction
-	SetActorLocation(GetActorLocation() - 100*FVector::YAxisVector);	
+	SetActorLocation(GetActorLocation() + 100*FVector::YAxisVector);	
 }
 
 // Called to bind functionality to input
