@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "ThreeDeetrisGameModeBase.generated.h"
+#include "GThreeDeetrisGameModeBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class THREEDEETRIS_API AThreeDeetrisGameModeBase : public AGameModeBase
+class THREEDEETRIS_API AGThreeDeetrisGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
