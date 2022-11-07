@@ -71,6 +71,30 @@ void AGPiecePawn::MoveRight()
 	SetActorLocation(GetActorLocation() + 100*FVector::YAxisVector);	
 }
 
+void AGPiecePawn::TurnUp()
+{
+	FRotator DeltaRotation = FRotator(-90, 0, 0);
+	AddActorWorldRotation(DeltaRotation);
+}
+
+void AGPiecePawn::TurnDown()
+{
+	FRotator DeltaRotation = FRotator(90, 0, 0);
+	AddActorWorldRotation(DeltaRotation);
+}
+
+void AGPiecePawn::TurnLeft()
+{
+	FRotator DeltaRotation = FRotator(0, 90, 0);
+	AddActorWorldRotation(DeltaRotation);
+}
+
+void AGPiecePawn::TurnRight()
+{
+	FRotator DeltaRotation = FRotator(0, -90, 0);
+	AddActorWorldRotation(DeltaRotation);
+}
+
 // Called to bind functionality to input
 void AGPiecePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -79,5 +103,9 @@ void AGPiecePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAction(TEXT("MoveBackward"), IE_Pressed, this, &AGPiecePawn::MoveBackward);
 	PlayerInputComponent->BindAction(TEXT("MoveLeft"), IE_Pressed, this, &AGPiecePawn::MoveLeft);
 	PlayerInputComponent->BindAction(TEXT("MoveRight"), IE_Pressed, this, &AGPiecePawn::MoveRight);
+	PlayerInputComponent->BindAction(TEXT("TurnUp"), IE_Pressed, this, &AGPiecePawn::TurnUp);
+	PlayerInputComponent->BindAction(TEXT("TurnDown"), IE_Pressed, this, &AGPiecePawn::TurnDown);
+	PlayerInputComponent->BindAction(TEXT("TurnLeft"), IE_Pressed, this, &AGPiecePawn::TurnLeft);
+	PlayerInputComponent->BindAction(TEXT("TurnRight"), IE_Pressed, this, &AGPiecePawn::TurnRight);
 }
 
